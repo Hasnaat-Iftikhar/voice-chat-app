@@ -15,4 +15,4 @@ This is the backend project of voice chat application using NodeJs, ExpressJs, a
 - Docker
 
 #### Note:-
-This project is not completed right now. Within few hours, I'll update that read.me file for further project info.
+This project is not available for open-source contribution and it's development is not completed right now. Within few hours, I'll update that read.me file for further project info.
