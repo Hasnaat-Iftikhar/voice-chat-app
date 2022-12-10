@@ -10,5 +10,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/auth/signup", authController.signup);
+router.post("/api/auth/login", authController.login);
 
 module.exports = router;

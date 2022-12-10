@@ -39,6 +39,36 @@ class AuthController {
       });
     }
   }
+
+  async login(req, res) {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(403).send({
+        message: "All fields are required",
+      });
+    }
+
+    // Checking user registered in db or not
+    const registeredUser = await userService.findUser({ email });
+    if (!registeredUser) {
+      return res.status(404).json({
+        message: "Sorry, you are not registered in our record.",
+      });
+    }
+
+    // Going to hash the entered password and will check that with saved password in db
+    const hashedPassword = hashService.hashPassword(password);
+    if (hashedPassword === registeredUser.password) {
+      return res.status(200).json({
+        message: "Yes, you can access the dashboard",
+      });
+    } else {
+      return res.status(403).json({
+        message: "Please enter valid password",
+      });
+    }
+  }
 }
 
 module.exports = new AuthController();
